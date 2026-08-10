@@ -1,0 +1,174 @@
+/*
+ * WP Builder frontend styles.
+ */
+
+.wpb-content {
+	display: block;
+}
+
+.wpb-container,
+.wpb-part .wpb-container {
+	max-width: 1140px;
+	margin: 0 auto;
+	padding: 0 24px;
+}
+
+/* Section spacing */
+.wpb-spacing-default { padding: 64px 0; }
+.wpb-spacing-compact { padding: 32px 0; }
+.wpb-spacing-wide   { padding: 104px 0; }
+.wpb-spacing-none   { padding: 0; }
+
+.wpb-section-bg-image {
+	background-size: cover;
+	background-position: center;
+}
+
+.wpb-align-center { text-align: center; }
+.wpb-align-left   { text-align: left; }
+.wpb-align-right  { text-align: right; }
+
+/* Typography defaults */
+.wpb-content h1,
+.wpb-content h2,
+.wpb-content h3,
+.wpb-content h4,
+.wpb-part h1,
+.wpb-part h2,
+.wpb-part h3,
+.wpb-part h4 {
+	margin: 0 0 0.5em;
+	line-height: 1.2;
+	color: inherit;
+	font-family: inherit;
+}
+
+.wpb-content p,
+.wpb-part p {
+	margin: 0 0 1em;
+	line-height: 1.65;
+}
+
+/* Hero */
+.wpb-hero { padding: 16px 0; }
+.wpb-hero-title { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; }
+.wpb-hero-subtitle { font-size: clamp(1rem, 2vw, 1.25rem); opacity: 0.85; max-width: 640px; margin: 0 auto 24px; }
+.wpb-hero.wpb-align-left .wpb-hero-subtitle { margin-left: 0; }
+.wpb-hero-actions { margin-top: 16px; }
+
+/* Buttons */
+.wpb-btn {
+	display: inline-block;
+	padding: 12px 28px;
+	border-radius: 8px;
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 1rem;
+	transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.wpb-btn:hover { opacity: 0.85; }
+.wpb-btn-primary { background: #6366f1; color: #fff; }
+.wpb-btn-outline  { border: 2px solid currentColor; color: inherit; }
+.wpb-btn-ghost    { color: inherit; padding-left: 8px; padding-right: 8px; }
+.wpb-btn-sm { padding: 8px 18px; font-size: 0.875rem; }
+.wpb-btn-lg { padding: 16px 36px; font-size: 1.125rem; }
+
+/* Image */
+.wpb-image img { max-width: 100%; height: auto; display: inline-block; }
+.wpb-image.wpb-align-center img { margin: 0 auto; }
+.wpb-caption { margin-top: 8px; font-size: 0.875rem; opacity: 0.7; }
+.wpb-rounded img { border-radius: 16px; }
+
+/* Grids */
+.wpb-gallery,
+.wpb-cards,
+.wpb-columns {
+	display: grid;
+	gap: 24px;
+}
+.wpb-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.wpb-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.wpb-cols-4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 768px) {
+	.wpb-cols-2,
+	.wpb-cols-3,
+	.wpb-cols-4 { grid-template-columns: 1fr; }
+}
+
+.wpb-gallery figure { margin: 0; }
+.wpb-gallery img {
+	width: 100%;
+	height: 240px;
+	object-fit: cover;
+	display: block;
+}
+.wpb-gallery.wpb-rounded img { border-radius: 12px; }
+
+/* Cards */
+.wpb-card {
+	background: #f8fafc;
+	border: 1px solid #e2e8f0;
+	border-radius: 16px;
+	padding: 28px;
+}
+.wpb-card a { text-decoration: none; color: inherit; display: block; }
+.wpb-card-icon { font-size: 2rem; margin-bottom: 12px; }
+.wpb-card-title { font-size: 1.25rem; margin-bottom: 8px; }
+.wpb-card-text { opacity: 0.8; margin: 0; }
+
+/* CTA */
+.wpb-cta {
+	text-align: center;
+	padding: 32px;
+	border-radius: 16px;
+}
+.wpb-section-cta .wpb-container { padding: 0; }
+
+/* Columns */
+.wpb-column-title { font-size: 1.15rem; }
+
+/* Divider & spacer */
+.wpb-divider { border: none; border-top: 2px solid #e2e8f0; margin: 0 auto; }
+.wpb-divider-dashed { border-top-style: dashed; }
+.wpb-divider-dotted { border-top-style: dotted; }
+.wpb-spacer { display: block; }
+
+/* Map & video */
+.wpb-map,
+.wpb-video {
+	position: relative;
+	width: 100%;
+	border-radius: 16px;
+	overflow: hidden;
+}
+.wpb-map iframe,
+.wpb-video iframe {
+	width: 100%;
+	height: 100%;
+	border: 0;
+	display: block;
+}
+.wpb-video { aspect-ratio: 16 / 9; }
+
+/* Part chrome */
+.wpb-part-header .wpb-section { padding: 0; }
+.wpb-part-header .wpb-container { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 24px; }
+.wpb-part-header .wpb-section-hero { text-align: left; }
+.wpb-part-header .wpb-hero-title { font-size: 1.25rem; margin: 0; }
+.wpb-part-header .wpb-hero-subtitle { display: none; }
+.wpb-part-footer { background: #0f172a; color: #f8fafc; }
+.wpb-part-footer .wpb-section { padding: 0; }
+
+/* Preview bar */
+.wpb-preview-bar {
+	background: #f59e0b;
+	color: #0f172a;
+	text-align: center;
+	padding: 10px 16px;
+	font-size: 0.9rem;
+	font-weight: 600;
+	position: sticky;
+	top: 0;
+	z-index: 999;
+}
+.wpb-preview-bar a { color: #0f172a; }
