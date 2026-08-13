@@ -84,14 +84,38 @@ final class Provider {
 	 * @return array
 	 */
 	public static function ability_to_tool( \WP_Ability $ability ): array {
+		$schema = self::normalize_schema( $ability->get_input_schema() );
 		return array(
 			'type'     => 'function',
 			'function' => array(
 				'name'        => self::TOOL_PREFIX . str_replace( '/', '_', $ability->get_name() ),
 				'description' => (string) $ability->get_description(),
-				'parameters'  => $ability->get_input_schema(),
+				'parameters'  => $schema,
 			),
 		);
+	}
+
+	/**
+	 * Normalize input schema for OpenAI compatibility.
+	 *
+	 * OpenAI/API consumers reject `properties: []` (must be object `{}`)
+	 * and require a top-level `additionalProperties` key for strict schemas.
+	 *
+	 * @param array $schema Raw input schema from the ability.
+	 * @return array Normalized schema object.
+	 */
+	private static function normalize_schema( array $schema ): array {
+		if ( ! isset( $schema['type'] ) ) {
+			$schema['type'] = 'object';
+		}
+		// PHP [] serializes to JSON `[]`; force empty properties to {}.
+		if ( isset( $schema['properties'] ) && ! is_array( $schema['properties'] ) ) {
+			$schema['properties'] = array();
+		}
+		$schema['properties']      = (object) ( array_merge( (array) $schema['properties'], array() ) );
+		$schema['required']        = array_values( (array) ( $schema['required'] ?? array() ) );
+		$schema['additionalProperties'] = false;
+		return $schema;
 	}
 
 	/**
